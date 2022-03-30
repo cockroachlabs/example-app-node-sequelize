@@ -19,6 +19,6 @@ To run the code:
 1. In your terminal, from the top of this project directory:
 
    ```shell
-   $ npm install sequelize sequelize-cockroachdb
+   $ npm install
    $ node app.js
    ```
