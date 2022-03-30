@@ -1,25 +1,8 @@
 const Sequelize = require("sequelize-cockroachdb");
-// For secure connection:
-//const fs = require('fs');
 
 // Connect to CockroachDB through Sequelize.
-var sequelize = new Sequelize({
-  dialect: "postgres",
-  username: "max",
-  password: "roach",
-  host: "localhost",
-  port: 26257,
-  database: "bank",
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-      // For secure connection:
-      /*ca: fs.readFileSync('certs/ca.crt')
-                .toString()*/
-    },
-  },
-  logging: false,
-});
+const connectionString = process.env.DATABASE_URL
+const sequelize = new Sequelize(connectionString)
 
 // Define the Account model for the "accounts" table.
 const Account = sequelize.define("accounts", {
