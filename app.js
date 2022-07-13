@@ -2,7 +2,11 @@ const Sequelize = require("sequelize-cockroachdb");
 
 // Connect to CockroachDB through Sequelize.
 const connectionString = process.env.DATABASE_URL
-const sequelize = new Sequelize(connectionString)
+const sequelize = new Sequelize(connectionString, {
+  dialectOptions: {
+    application_name: "docs_simplecrud_node-sequelize"
+  }
+});
 
 // Define the Account model for the "accounts" table.
 const Account = sequelize.define("accounts", {
